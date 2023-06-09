@@ -1,0 +1,55 @@
+Name            MMU;
+Partno          CA0001;
+Revision        01;
+Date            06/01/23;
+Designer        M. Fredriksson;
+Company         None;
+Location        None;
+Assembly        None;
+Device          G16V8MA;
+
+
+/** Inputs **/
+PIN 1 = !RFSH;
+PIN 2 = A2;
+PIN 3 = A3;
+PIN 4 = A7;
+PIN 5 = A19;
+PIN 6 = A20;
+PIN 7 = A21;
+PIN 8 = !MREQ;
+PIN 9 = !IORQ;
+
+/** Outputs **/
+PIN 19 = !RAM;
+PIN 18 = !ROM_0;
+PIN 17 = !ROM_1;
+PIN 16 = !MBUS;
+PIN 15 = !SIO;
+PIN 14 = !CTC;
+PIN 13 = !MMU_CTRL;
+PIN 12 = !MMU_WR;
+
+FIELD address = [A21..19, A7, A3..2];
+
+ROM_0_select 		= address:[000000..07ffff];
+ROM_1_select 		= address:[080000..0fffff];
+RAM_select 		= address:[100000..1fffff];
+BUS_mem_select 	= address:[200000..3fffff];
+
+SIO_select 		= address:[000000..000003];
+CTC_select 		= address:[000004..000007];
+MMU_ctrl_select	= address:[000008..00000b];
+MMU_wr_select 	= address:[00000c..00000f];
+BUS_IO_select 	= A7;
+
+ROM_0 		= !RFSH & MREQ & ROM_0_select;
+ROM_1 		= !RFSH & MREQ & ROM_1_select;
+RAM 		= !RFSH & MREQ & RAM_select;
+
+SIO 		= IORQ & SIO_select ;
+CTC 		= IORQ & CTC_select ;
+MMU_CTRL 	= IORQ & MMU_ctrl_select;
+MMU_WR 	= IORQ & MMU_wr_select ;
+
+MBUS 		= !RFSH & MREQ & BUS_mem_select # IORQ & BUS_IO_select;
