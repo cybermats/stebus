@@ -14,8 +14,7 @@ PIN 3   = ERR; 	/* DTERR                           */
 PIN 4   = !RD; 	/*                                 */ 
 PIN 5   = !IORQ; 	/*                                 */ 
 PIN 6   = !MREQ; 	/*                                 */ 
-PIN 7   = !M1; 	/*                                 */ 
-PIN 8   = !MBUS; 	/*                                 */ 
+PIN 7   = !MBUS; 	/*                                 */ 
 
 /* *************** OUTPUT PINS *********************/
 PIN 15    = !BWT; /*                                 */ 
@@ -25,7 +24,6 @@ PIN 14    = !ENDR; /*                                 */
 PIN 17    = CYEND;
 
 /* Cycle end */
-
 APPEND CYEND = MBUS & DT;
 APPEND CYEND = MBUS & ERR;
 APPEND CYEND = MBUS & CYEND;
@@ -33,12 +31,15 @@ APPEND CYEND = MBUS & CYEND;
 APPEND ENDR = !CYEND & MBUS;
 APPEND ENDR = AS;
 
+/* Bus Wait */
 BWT = MBUS & !CYEND;
 
+/* STEBus Address Strobe */
 APPEND AS = !DT & !ERR & !CYEND & ENDR & MBUS;
 APPEND AS = DS & IORQ;
 APPEND AS = DS & MREQ;
 
+/* STEBus Data Strobe */
 APPEND DS = MBUS & AS & !RD & !CYEND & ENDR;
 APPEND DS = MBUS & AS & RD & IORQ;
 APPEND DS = MBUS & AS & RD & MREQ;
