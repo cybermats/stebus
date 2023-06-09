@@ -1,0 +1,16 @@
+Name     STEBus;
+PartNo   00;
+Date     2023-06-09;
+Revision 01;
+Designer Engineer;
+Company  Mats Fredriksson;
+Assembly None;
+Location ;
+Device   G16V8AS;
+
+
+ORDER: !AS, !BWT, CYEND, !DS, DT, !ENDR, ERR, !IORQ, !M1, !MBUS, !MREQ, !RD; 
+
+
+VECTORS:
+************
