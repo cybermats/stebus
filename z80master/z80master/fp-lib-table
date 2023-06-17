@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "cyber80")(type "KiCad")(uri "D:/Documents/kicad/stebus/library/cyber80.pretty")(options "")(descr ""))
+)
