@@ -20,7 +20,7 @@ PIN 7   = !MBUS; 	/*                                 */
 PIN 15    = !BWT; /*                                 */ 
 PIN 12    = !AS; /*                                 */ 
 PIN 13    = !DS; /*                                 */ 
-PIN 14    = !ENDR; /*                                 */ 
+PIN 19    = !ENDR; /*                                 */ 
 PIN 17    = CYEND;
 
 /* Cycle end */
